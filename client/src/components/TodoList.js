@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { addPost, getPosts, editPost, finishToggle, deletePost } from '../actions/postActions';
-import { Spinner, Alert, Button } from 'reactstrap';
+import { Spinner  } from 'reactstrap';
 import Item from './Item';
 import '../styles/CreatePostStyle.css'
 
@@ -26,22 +25,16 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        console.log("This is componentDidMount");
         this.props.getPosts();
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        console.log("componentWillUpdate");
-        console.log(nextProps);
-    }
-
     render() {
-        const { posts } = this.props;
+        const { posts } = this.props.posts;
         let postView;
         if (posts === null || posts === undefined) {
             postView = <Spinner color="primary" />;
         } else {
-            postView = this.props.posts.map((post, index) => {
+            postView = posts.map((post, index) => {
                 return (
                     <Item
                         key={post._id}

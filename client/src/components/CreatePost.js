@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Button, Form, FormGroup, Label, Input, FormText, CustomInput } from 'reactstrap';
-import { addPost, getPosts, editPost, deletePost } from '../actions/postActions';
+import { Button, Form, FormGroup, Label, Input, CustomInput, FormFeedback } from 'reactstrap';
+import { addPost } from '../actions/postActions';
 import '../styles/CreatePostStyle.css'
 
 class CreatePost extends Component {
@@ -10,12 +10,19 @@ class CreatePost extends Component {
         this.state = {
             title: '',
             content: '',
-            duedate: '',
-            priority: ""
+            deadline: '',
+            priority: "Normal",
+            errors: {}
         };
 
         this.onChange = this.onChange.bind(this);
         this.onClick = this.onClick.bind(this);
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.errors) {
+            this.setState({ errors: newProps.errors });
+        }
     }
 
     onClick(e) {
@@ -24,7 +31,7 @@ class CreatePost extends Component {
         const newPost = {
             title: this.state.title,
             content: this.state.content,
-            duedate: this.state.duedate,
+            deadline: this.state.deadline,
             priority: this.state.priority
         };
 
@@ -36,30 +43,42 @@ class CreatePost extends Component {
     }
 
     render() {
+        const {title, content, deadline} = this.state.errors;
+
+        let TitleInputField = (title === null || title === undefined) ?
+            <Input type="text" name="title" onChange={this.onChange} />:
+            <Input invalid type="text" name="title" onChange={this.onChange} />
+
+        let ContentInputField = (content === null || content === undefined) ?
+            <Input type="textarea" name="content" onChange={this.onChange} />: 
+            <Input invalid type="textarea" name="content" onChange={this.onChange} />
+
+        let DeadlineInputField = (deadline === null || deadline === undefined) ?
+            <Input type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>:
+            <Input invalid type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>
+
         return (
             <div className="mainStyle">
                 <Form>
                     <FormGroup>
-                        <Label for="exampleCity">Title</Label>
-                        <Input type="text" name="title" onChange={this.onChange} />
+                        <Label for="title">Title</Label>
+                        {TitleInputField}
+                        <FormFeedback>{title}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="exampleText">Content</Label>
-                        <Input type="textarea" name="content" onChange={this.onChange} />
+                        <Label for="content">Content</Label>
+                        {ContentInputField}
+                        <FormFeedback>{content}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="exampleDate">Due Date</Label>
-                        <Input
-                            type="date"
-                            name="duedate"
-                            onChange={this.onChange}
-                            placeholder="date placeholder"
-                        />
+                        <Label for="date">Deadline</Label>
+                        {DeadlineInputField}
+                        <FormFeedback>{deadline}</FormFeedback>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="exampleCustomSelect">Priority</Label>
+                        <Label for="priority">Priority</Label>
                         <CustomInput type="select" id="selectform" name="priority" onChange={this.onChange}>
-                            <option value="">select</option>
+                            <option value="Normal">select</option>
                             <option>Normal</option>
                             <option>Important</option>
                             <option>Very Important</option>
@@ -74,10 +93,12 @@ class CreatePost extends Component {
 
 
 const mapStateToProps = state => ({
-    posts: state.posts
+    posts: state.posts,
+    errors: state.errors
 });
 
 export default connect(
     mapStateToProps,
     { addPost }
 )(CreatePost);
+

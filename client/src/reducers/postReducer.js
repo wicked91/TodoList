@@ -1,13 +1,11 @@
 import {
     GET_POSTS,
-    ADD_POST,
     TOGGLE_POST,
     DELETE_POST
   } from '../actions/types';
   
   const initialState = {
-    posts: [],
-    loading: false
+    posts: []
   };
   
   export default function(state = initialState, action) {
@@ -17,11 +15,6 @@ import {
           ...state,
           posts: action.payload
         };
-      case ADD_POST:
-        return {
-          ...state,
-          posts: [ ...state.posts, action.payload]
-        };
       case TOGGLE_POST:
         return {
           ...state,
@@ -29,7 +22,7 @@ import {
               ...state.posts.slice(0, action.index),
               {
                   ...state.posts[action.index],
-                  complete: action.payload.complete
+                  finish: action.payload.finish
               },
               ...state.posts.slice(action.index +1, state.posts.length)
           ]

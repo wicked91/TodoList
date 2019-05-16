@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title : { type: String, required : true },
     content : { type: String , required : true },
-    duedate: { type: Date },
+    deadline: { type: Date, required : true },
     priority : { type : String, default : "Normal"},
-    complete : { type : Boolean, default: false}
+    finish : { type : Boolean, default: false}
 });
 
 module.exports = Post = mongoose.model('post', PostSchema);

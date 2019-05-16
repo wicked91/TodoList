@@ -18,11 +18,11 @@ class Item extends Component {
 
     render() {
         let badge;
-        if (this.props.post.complete) {
+        if (this.props.post.finish) {
             badge=  <Badge color="success" pill>완료됨</Badge>;
         } else {
             const start = moment(Date.now());
-            const end = moment(this.props.post.duedate);
+            const end = moment(this.props.post.deadline);
             const diff = end.diff(start, 'days');
             if (diff < 0) {
                 badge =  <Badge color="danger" pill>마감됨</Badge>;
@@ -40,7 +40,7 @@ class Item extends Component {
                             {this.props.post.content}
                         </ToastBody>
                         <ToastHeader>
-                            Due date : <Moment format="YYYY/MM/DD">{this.props.post.duedate}</Moment>
+                            Deadline : <Moment format="YYYY/MM/DD">{this.props.post.deadline}</Moment>
                             <br />
                             Priority : {this.props.post.priority}
                         </ToastHeader>
