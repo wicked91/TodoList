@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { addPost, getPosts, editPost, finishToggle, deletePost } from '../actions/postActions';
-import { Spinner  } from 'reactstrap';
+import { Spinner, Container, Row, Col } from 'reactstrap';
 import Item from './Item';
 import '../styles/CreatePostStyle.css'
 
@@ -36,18 +36,23 @@ class TodoList extends Component {
         } else {
             postView = posts.map((post, index) => {
                 return (
-                    <Item
-                        key={post._id}
-                        post={post}
-                        index={index}
-                        onDelete={this.onDelete}
-                        onFinish={this.onFinish} />
+                    <Col xs="6" sm="4">
+                        <Item
+                            key={post._id}
+                            post={post}
+                            index={index}
+                            onDelete={this.onDelete}
+                            onFinish={this.onFinish} />
+                    </Col>
                 );
             });
         }
         return (
             <div>
-                {postView}
+
+                <Container>
+                    <Row>{postView}</Row>
+                </Container>
             </div>
         )
     }

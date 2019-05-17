@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const mongoose = require("mongoose");
+const MONGO_ATLAS_URI = require("./config/keys").mongoURI;
 
 const postRouter = require("./routes/api/posts");
 
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 mongoose
     .connect(
-        process.env.MONGO_ATLAS_URI, 
+        MONGO_ATLAS_URI, 
         { autoIndex: false, useNewUrlParser: true })
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));

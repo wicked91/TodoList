@@ -12,7 +12,7 @@ class EditPost extends Component {
             title: '',
             content: '',
             deadline: '',
-            priority: "",
+            priority: "보통",
             errors: {}
         };
 
@@ -61,6 +61,7 @@ class EditPost extends Component {
 
         return (
             <div className="mainStyle">
+                <h2>Edit Todo</h2>
                 <Form>
                     <FormGroup>
                         <Label for="title">Title</Label>
@@ -80,10 +81,10 @@ class EditPost extends Component {
                     <FormGroup>
                         <Label for="priority">Priority</Label>
                         <CustomInput type="select" id="selectform" name="priority" onChange={this.onChange}>
-                            <option value="Normal">select</option>
-                            <option>Normal</option>
-                            <option>Important</option>
-                            <option>Very Important</option>
+                            <option value="">select</option>
+                            <option>보통</option>
+                            <option>중요</option>
+                            <option>매우 중요</option>
                         </CustomInput>
                     </FormGroup>
                     <Button onClick={this.onClick}>Create</Button>
