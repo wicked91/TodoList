@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addPost, getPosts, editPost, deletePost } from '../actions/postActions';
-import {Alert, Button } from 'reactstrap';
+import { Jumbotron, Container, Alert, Button } from 'reactstrap';
 import TodoList from './TodoList';
 import '../styles/CreatePostStyle.css'
 
@@ -17,6 +17,10 @@ class Dashboard extends Component {
         this.onDismiss = this.onDismiss.bind(this);
     }
 
+    componentDidMount() {
+
+    }
+
     onDismiss() {
         this.setState({ visible: false });
     }
@@ -29,12 +33,12 @@ class Dashboard extends Component {
                         <Link to="/create" >
                             <Button color="success">New</Button>
                         </Link>
-                        <TodoList/>
+                        <TodoList />
                     </div>
                 </div>
-                {/* <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                    I am an alert and I can be dismissed!
-                </Alert> */}
+                <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                            I am an alert and I can be dismissed!
+                </Alert>
             </div>
         );
     }

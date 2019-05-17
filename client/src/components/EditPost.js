@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, CustomInput, FormFeedback } from 'reactstrap';
+import Moment from 'react-moment';
 import { editPost } from '../actions/postActions';
 import '../styles/CreatePostStyle.css'
 
@@ -47,11 +48,11 @@ class EditPost extends Component {
         const {title, content, deadline} = this.state.errors;
 
         let TitleInputField = (title === null || title === undefined) ?
-            <Input type="text" name="title" onChange={this.onChange} />:
+            <Input type="text" name="title" onChange={this.onChange}/>:
             <Input invalid type="text" name="title" onChange={this.onChange} />
 
         let ContentInputField = (content === null || content === undefined) ?
-            <Input type="textarea" name="content" onChange={this.onChange} />: 
+            <Input type="textarea" name="content" onChange={this.onChange}/>: 
             <Input invalid type="textarea" name="content" onChange={this.onChange} />
 
         let DeadlineInputField = (deadline === null || deadline === undefined) ?

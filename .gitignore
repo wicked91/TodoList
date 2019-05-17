@@ -11,6 +11,7 @@
 # production
 /build
 /config/keys_dev.js
+/nodemon.json
 
 # misc
 .DS_Store
