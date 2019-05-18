@@ -21,11 +21,11 @@ export const addPost = (newPost, history) => dispatch => {
 };
 
 export const getPosts = () => dispatch => {
-    axios.get('/posts/all')
+    axios.get('/posts')
         .then(res => {
             dispatch({
                 type: GET_POSTS,
-                payload: res.data
+                payload: res.data.data
             })
         })
         .catch(err => {
@@ -50,7 +50,7 @@ export const finishToggle = (id, index) => dispatch => {
         .then(res => {
             dispatch({
                 type: TOGGLE_POST,
-                payload: res.data,
+                payload: res.data.data.finish,
                 index: index
             })
         })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { addPost, getPosts, editPost, finishToggle, deletePost } from '../actions/postActions';
-import { Spinner, Container, Row, Col } from 'reactstrap';
+import { Spinner} from 'reactstrap';
 import Item from './Item';
 import '../styles/CreatePostStyle.css'
 
@@ -9,9 +9,6 @@ class TodoList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            visible: true
-        };
         this.onFinish = this.onFinish.bind(this);
         this.onDelete = this.onDelete.bind(this);
     }

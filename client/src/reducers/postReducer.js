@@ -22,7 +22,7 @@ import {
               ...state.posts.slice(0, action.index),
               {
                   ...state.posts[action.index],
-                  finish: action.payload.finish
+                  finish: action.payload
               },
               ...state.posts.slice(action.index +1, state.posts.length)
           ]
