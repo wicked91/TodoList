@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 mongoose
     .connect(
-        MONGO_ATLAS_URI, 
+        MONGO_ATLAS_URI,
         { autoIndex: false, useNewUrlParser: true })
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));
@@ -27,13 +27,13 @@ mongoose.Promise = global.Promise;
 
 app.use("/posts", postRouter);
 
-// if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, 'client/build')));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname + '/client/build/index.html'));
-    });
-// }
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
+
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('HttpServer starting  : ' + 'PORT=' + app.get('port'));
