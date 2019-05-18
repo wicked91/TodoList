@@ -5,7 +5,6 @@ import { Spinner, Container, Row, Col } from 'reactstrap';
 import Item from './Item';
 import '../styles/CreatePostStyle.css'
 
-
 class TodoList extends Component {
 
     constructor(props) {
@@ -36,23 +35,18 @@ class TodoList extends Component {
         } else {
             postView = posts.map((post, index) => {
                 return (
-                    <Col xs="6" sm="4">
-                        <Item
-                            key={post._id}
-                            post={post}
-                            index={index}
-                            onDelete={this.onDelete}
-                            onFinish={this.onFinish} />
-                    </Col>
+                    <Item
+                        key={post._id}
+                        index={index}
+                        post={post}
+                        onDelete={this.onDelete}
+                        onFinish={this.onFinish} />
                 );
             });
         }
         return (
-            <div>
-
-                <Container>
-                    <Row>{postView}</Row>
-                </Container>
+            <div className="divStyle">
+                {postView}
             </div>
         )
     }

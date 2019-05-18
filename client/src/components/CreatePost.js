@@ -58,7 +58,7 @@ class CreatePost extends Component {
             <Input invalid type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>
 
         return (
-            <div className="mainStyle">
+            <div className="formStyle">
                 <h2>Create Todo</h2>
                 <Form>
                     <FormGroup>

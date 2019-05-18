@@ -1,32 +1,19 @@
 import React, { Component } from 'react'
-import { Toast, ToastBody, ToastHeader, Button, ButtonGroup, Badge} from 'reactstrap';
+import { Toast, ToastBody, ToastHeader, Button, ButtonGroup, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Moment from 'react-moment';
 
 class Item extends Component {
-    constructor(props) {
-        super(props);
 
-        this.toggleNavbar = this.toggleNavbar.bind(this);
-        this.state = {
-            collapsed: true
-        };
-    }
-
-    toggleNavbar() {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
-    }
     onClickDelete = () => {
         const { onDelete, post } = this.props;
         onDelete(post._id);
     }
 
     onClickFinish = () => {
-        const { onFinish, post } = this.props;
-        onFinish(post._id, this.props.index);
+        const { onFinish, post, index } = this.props;
+        onFinish(post._id, index);
     }
 
     render() {
@@ -44,7 +31,7 @@ class Item extends Component {
         }
 
         let PriorityBadge;
-        if(priority === "보통") {
+        if (priority === "보통") {
             PriorityBadge = <Badge color="primary" pill>{priority}</Badge>;
         } else if (priority === "중요") {
             PriorityBadge = <Badge color="warning" pill>{priority}</Badge>;
@@ -62,18 +49,18 @@ class Item extends Component {
                         <ToastBody>
                             {content}
                         </ToastBody>
-                        <ToastBody>
-                            <Moment format="YYYY/MM/DD">{deadline}</Moment>{'     '}
-                        </ToastBody>
+                        <br />
+                        <ToastHeader></ToastHeader>
                         <ToastHeader>
-                            <ButtonGroup size="sm">
-                                <Button color="link" onClick={this.onClickFinish.bind(this)}>finish</Button>
-                                <Button color="link">
-                                    <Link to={`edit/${this.props.post._id}`}>edit</Link>
-                                </Button>
-                                <Button color="link" onClick={this.onClickDelete.bind(this)}>delete</Button>
-                            </ButtonGroup> {PriorityBadge} {"    "}  {badge} 
+                            <Moment format="YYYY/MM/DD">{deadline}</Moment>{'까지     '} {PriorityBadge} {"    "}  {badge}
                         </ToastHeader>
+                        <ButtonGroup size="sm">
+                            <Button color="link" onClick={this.onClickFinish.bind(this)}>finish</Button>
+                            <Button color="link">
+                                <Link to={`edit/${this.props.post._id}`}>edit</Link>
+                            </Button>
+                            <Button color="link" onClick={this.onClickDelete.bind(this)}>delete</Button>
+                        </ButtonGroup>
                     </Toast>
                 </div>
             </div>

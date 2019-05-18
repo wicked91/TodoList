@@ -1,7 +1,15 @@
-.mainStyle{
-    position: absolute;
-    top:50px;
+.divStyle{
+    position: relative;
+    left:40%;
+}
+
+.formStyle{
+    position : relative;
+    top:70px;
     left:40%;
     width: 400px;
-    height: 700px;
+}
+
+.textStyle {
+    text-align: center; 
 }

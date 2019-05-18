@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Jumbotron, Container, Button } from 'reactstrap';
+import '../styles/CreatePostStyle.css'
 
 const Header = () => {
   return (
-    <div>
+    <div className= "textStyle">
       <Jumbotron fluid>
         <Container fluid>
           <h2 className="display-3">Todo List</h2>
