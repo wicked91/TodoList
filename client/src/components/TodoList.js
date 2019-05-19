@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addPost, getPosts, editPost, finishToggle, deletePost } from '../actions/postActions';
+import { getPosts, finishToggle, deletePost } from '../actions/postActions';
 import { Spinner} from 'reactstrap';
 import Item from './Item';
 import '../styles/CreatePostStyle.css'
@@ -49,11 +50,18 @@ class TodoList extends Component {
     }
 }
 
+TodoList.propTypes = {
+    getPosts : PropTypes.func.isRequired,
+    finishToggle : PropTypes.func.isRequired,
+    deletePost : PropTypes.func.isRequired,
+    posts : PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => ({
     posts: state.posts
 });
 
 export default connect(
     mapStateToProps,
-    { addPost, getPosts, editPost, finishToggle, deletePost }
+    { getPosts, finishToggle, deletePost }
 )(TodoList);

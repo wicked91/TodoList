@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, CustomInput, FormFeedback } from 'reactstrap';
-import Moment from 'react-moment';
 import { editPost } from '../actions/postActions';
 import '../styles/CreatePostStyle.css'
 
@@ -92,6 +92,12 @@ class EditPost extends Component {
             </div>
         )
     }
+}
+
+EditPost.propTypes = {
+    editPost : PropTypes.func.isRequired,
+    posts : PropTypes.object.isRequired,
+    errors : PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { Toast, ToastBody, ToastHeader, Button, ButtonGroup, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -66,6 +67,13 @@ class Item extends Component {
             </div>
         )
     }
+}
+
+Item.propTypes = {
+    index : PropTypes.number.isRequired,
+    post : PropTypes.object.isRequired,
+    onDelete : PropTypes.func.isRequired,
+    onFinish : PropTypes.func.isRequired
 }
 
 export default Item;

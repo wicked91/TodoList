@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, CustomInput, FormFeedback } from 'reactstrap';
 import { addPost } from '../actions/postActions';
@@ -92,6 +93,11 @@ class CreatePost extends Component {
     }
 }
 
+CreatePost.propTypes = {
+    addPost : PropTypes.func.isRequired,
+    posts : PropTypes.object.isRequired,
+    errors : PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
     posts: state.posts,
