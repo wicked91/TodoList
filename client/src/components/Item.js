@@ -19,15 +19,24 @@ class Item extends Component {
 
     render() {
         const { title, content, priority, deadline, finish } = this.props.post;
+
+        let deadlineField;
+
+        if(deadline){
+            deadlineField = <Moment format="YYYY/MM/DD">{deadline}</Moment>;
+        }
+
         let badge;
         if (finish) {
             badge = <Badge color="success" pill>완료됨</Badge>;
         } else {
-            const start = moment(Date.now());
-            const end = moment(deadline);
-            const diff = end.diff(start, 'days');
-            if (diff < 0) {
-                badge = <Badge color="danger" pill>마감됨</Badge>;
+            if(deadline){
+                const start = moment(Date.now());
+                const end = moment(deadline);
+                const diff = end.diff(start, 'days');
+                if (diff < 0) {
+                    badge = <Badge color="danger" pill>마감됨</Badge>;
+                }
             }
         }
 
@@ -53,7 +62,7 @@ class Item extends Component {
                         <br />
                         <ToastHeader></ToastHeader>
                         <ToastHeader>
-                            <Moment format="YYYY/MM/DD">{deadline}</Moment>{'까지     '} {PriorityBadge} {"    "}  {badge}
+                            {deadlineField}  {(deadlineField) ? "마감": ''} {PriorityBadge} {badge}
                         </ToastHeader>
                         <ButtonGroup size="sm">
                             <Button color="link" onClick={this.onClickFinish.bind(this)}>finish</Button>

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title : { type: String, required : true },
     content : { type: String , required : true },
-    deadline: { type: Date, required : true },
+    deadline: { type: Date },
     priority : { type : String, default : "보통"},
     finish : { type : Boolean, default: false}
 });

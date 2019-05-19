@@ -11,7 +11,7 @@ class EditPost extends Component {
         this.state = {
             title: '',
             content: '',
-            deadline: '',
+            deadline: null,
             priority: "보통",
             errors: {}
         };
@@ -47,17 +47,17 @@ class EditPost extends Component {
     render() {
         const {title, content, deadline} = this.state.errors;
 
-        let TitleInputField = (title === null || title === undefined) ?
-            <Input type="text" name="title" onChange={this.onChange}/>:
-            <Input invalid type="text" name="title" onChange={this.onChange} />
+        let TitleInputField = (title) ?
+            <Input invalid type="text" name="title" onChange={this.onChange} /> :
+            <Input type="text" name="title" onChange={this.onChange} />
 
-        let ContentInputField = (content === null || content === undefined) ?
-            <Input type="textarea" name="content" onChange={this.onChange}/>: 
-            <Input invalid type="textarea" name="content" onChange={this.onChange} />
+        let ContentInputField = (content) ?
+            <Input invalid type="textarea" name="content" onChange={this.onChange} /> :
+            <Input type="textarea" name="content" onChange={this.onChange} />
 
-        let DeadlineInputField = (deadline === null || deadline === undefined) ?
-            <Input type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>:
-            <Input invalid type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>
+        let DeadlineInputField = (deadline) ?
+            <Input invalid type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder" /> :
+            <Input type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder" />
 
         return (
             <div className="formStyle">

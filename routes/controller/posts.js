@@ -99,7 +99,7 @@ exports.post_edit = (req, res) => {
     const postFields = {};
     if (req.body.id) postFields.id = req.body.id;
     if (req.body.title) postFields.title = req.body.title;
-    if (req.body.content) postFields.content = req.body.content;
+    if (req.body.content) postFields.content = req.body.content;    
     if (req.body.deadline) postFields.deadline = req.body.deadline;
     if (req.body.priority) postFields.priority = req.body.priority;
 
