@@ -62,7 +62,7 @@ class Item extends Component {
                         <br />
                         <ToastHeader></ToastHeader>
                         <ToastHeader>
-                            {deadlineField}  {(deadlineField) ? "마감": ''} {PriorityBadge} {badge}
+                            {deadlineField}  {(deadlineField) ? "까지": ''} {PriorityBadge} {badge}
                         </ToastHeader>
                         <ButtonGroup size="sm">
                             <Button color="link" onClick={this.onClickFinish.bind(this)}>finish</Button>

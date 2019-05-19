@@ -87,7 +87,7 @@ class EditPost extends Component {
                             <option>매우 중요</option>
                         </CustomInput>
                     </FormGroup>
-                    <Button onClick={this.onClick}>Create</Button>
+                    <Button onClick={this.onClick}>Edit</Button>
                 </Form>
             </div>
         )
