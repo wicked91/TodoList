@@ -50,7 +50,7 @@ class Item extends Component {
         }
 
         return (
-            <div>
+            <div div className="divStyle">
                 <div className="p-3 my-2 rounded">
                     <Toast>
                         <ToastHeader>

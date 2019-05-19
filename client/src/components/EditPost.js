@@ -57,7 +57,7 @@ class EditPost extends Component {
 
         let DeadlineInputField = (deadline) ?
             <Input invalid type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder" /> :
-            <Input type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder" />
+            <Input type="date" name="deadline" onChange={this.onChange} placeholder="date placeholder"/>
 
         return (
             <div className="formStyle">

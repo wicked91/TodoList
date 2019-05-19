@@ -43,7 +43,7 @@ class TodoList extends Component {
             });
         }
         return (
-            <div className="divStyle">
+            <div>
                 {postView}
             </div>
         )

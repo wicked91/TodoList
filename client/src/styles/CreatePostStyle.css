@@ -1,13 +1,13 @@
 .divStyle{
-    position: relative;
-    left:40%;
+    width: 20vw;
+    min-width: 300px;
+    margin: auto;
 }
 
 .formStyle{
-    position : relative;
-    top:70px;
-    left:40%;
-    width: 400px;
+    width: 20vw;
+    min-width: 400px;
+    margin: 100px auto;
 }
 
 .textStyle {
